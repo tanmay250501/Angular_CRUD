@@ -1,0 +1,139 @@
+<div class="container-fluid "
+  style="background-image: url('assets/p4.jpg');background-repeat: no-repeat;background-size:cover;height: 800px;">
+  <div class="row">
+    <div class="col-lg-11">
+      <h1 style="text-align: center;color: whitesmoke;margin-bottom: 50px;margin-top: 20px;text-align: center;">COVID-19
+        VACCINATION</h1>
+    </div>
+    <div class="col-lg-1" style="padding-right:20px ;">
+      <button type="button" style="margin-top: 20px;;text-align: center;" class="btn btn-danger" tooltip="Add Candidate"
+      placement="bottom"(click)="openModal(template,null)"><span style="font-size:20px" class='bi bi-person-plus-fill'></span>
+      </button>
+    </div>
+  </div>
+  <div class="row ">
+    <div class="col-lg-3">
+      <h1 style="text-align: center;margin-bottom: 50px;color:whitesmoke;">Candidate</h1>
+      <ol class="list-group list-group-numbered">
+        <li class="list-group-item list-group-item-warning list-group-item-action  b1"
+          *ngFor="let c of candidate;let i=index"><img src="{{c.img}}" class="avatar"> {{ c.name }} 
+          <button class="btn edit fr"tooltip="Edit"
+          placement="bottom" (click)="openModal(edittemplate,i)"><span  class='bi bi-pencil-square' style="font-size: 20px;"></span></button>
+          <button class="btn success fr" (click)="d1(i)">Move</button>
+          <button class="btn delete fr"tooltip="Delete"
+          placement="bottom" (click)="delete(i)"><i
+
+              class="fas fa-user-alt-slash" aria-hidden="true" ></i></button>
+
+
+        </li>
+      </ol>
+    </div>
+    <div class="col-lg-3">
+      <h1 style="text-align: center;margin-bottom: 50px;color:whitesmoke">Dose1</h1>
+      <ol class="list-group list-group-numbered">
+        <li class="list-group-item list-group-item-warning list-group-item-action b1"
+          *ngFor="let c of dose1;let i =index"> {{c.name}}
+          <div class="btn fr" tooltip="Undo" placement="bottom" (click)="d6(i)"><i class="fa fa-chevron-left"
+              style="color:rgb(0, 0, 0)"></i></div>
+          <div class="btn success fr" (click)="d2(i)">Move</div>
+        </li>
+      </ol>
+    </div>
+    <div class="col-lg-3">
+      <h1 style="text-align: center;margin-bottom: 50px;color:whitesmoke">Dose2</h1>
+      <ol class="list-group list-group-numbered">
+        <li class="list-group-item list-group-item-info list-group-item-action b1" *ngFor="let c of dose2;let i =index">
+          {{c.name}}
+          <div class="btn  fr"tooltip="Undo" placement="bottom"  (click)="d5(i)"><i class="fa fa-chevron-left"
+              style="color:rgb(0, 0, 0)"></i></div>
+          <div class="btn success fr" (click)="d3(i)">Move</div>
+        </li>
+      </ol>
+    </div>
+    
+    <div class="col-lg-3">
+      <h1 style="margin-bottom: 50px;color:whitesmoke;">BoosterDose</h1>
+      <ol class="list-group list-group-numbered">
+        <li class="list-group-item list-group-item-success list-group-item-action b1"
+          *ngFor="let c of boosterDose;let i =index"> {{c.name}}
+          <div class="btn  fr" tooltip="Undo" placement="bottom"  (click)="d4(i)"><i class="fa fa-chevron-left"
+              style="color:rgb(0, 0, 0)"></i></div>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+</div>
+
+
+<router-outlet></router-outlet>
+
+
+
+
+
+
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Add Candidate</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="close()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+   <!-- Modal body -->
+   <div class="modal-body">
+    <div class="mb-3 mt-3">
+      <label for="text" style="margin-bottom:5px"> Name:</label>
+      <input type="text" class="form-control" placeholder="Enter your Name" [(ngModel)]="candidateName">
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="text" style="margin-bottom:5px"> Age:</label>
+      <input type="text" class="form-control" placeholder="Enter your Age" [(ngModel)]="candidateAge">
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="text" style="margin-bottom:5px"> Phone No:</label>
+      <input type="text" class="form-control" placeholder="Enter your Phone Number" [(ngModel)]="candidatePhone">
+    </div>
+  </div>
+
+  <!-- Modal footer -->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="close()">Close</button>
+    <button type="submit" class="btn btn-success" [disabled]="candidatePhone == ''"
+      (click)="submit()">Submit</button>
+  </div>
+</ng-template>
+
+
+<ng-template #edittemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit Candidate</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="close()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+   <!-- Modal body -->
+   <div class="modal-body">
+    <div class="mb-3 mt-3">
+      <label for="text" style="margin-bottom:5px"> Name:</label>
+      <input type="text" class="form-control" placeholder="Enter your Name" [(ngModel)]="candidateName">
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="text" style="margin-bottom:5px"> Age:</label>
+      <input type="text" class="form-control" placeholder="Enter your Age" [(ngModel)]="candidateAge">
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="text" style="margin-bottom:5px"> Phone No:</label>
+      <input type="text" class="form-control" placeholder="Enter your Phone Number" [(ngModel)]="candidatePhone">
+    </div>
+  </div>
+
+  <!-- Modal footer -->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="close()">Close</button>
+    <button type="submit" class="btn btn-success" 
+      (click)="update()">Update</button>
+  </div>
+</ng-template>

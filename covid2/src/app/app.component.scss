@@ -1,0 +1,48 @@
+.fr {
+    float: right;
+}
+
+.txt {
+    text-align: center;
+}
+
+.b1 {
+    background-color: rgb(247, 247, 247);
+    color: rgb(0, 0, 0);
+    opacity: 0.8;
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.success {
+    border-color: #04aa6d;
+    color: green;
+}
+
+.success:hover {
+    background-color: #04aa6d;
+    color: white;
+}
+.delete {
+    
+    color:  black;
+}
+
+.delete:hover {
+    
+    color: red;
+}
+.edit {
+    
+    color:  black;
+}
+
+.edit:hover {
+    
+    color: orange;
+}
